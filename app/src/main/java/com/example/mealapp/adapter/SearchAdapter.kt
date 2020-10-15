@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mealapp.MainActivity
+import com.example.mealapp.activity.MainActivity
 import com.example.mealapp.R
 import com.example.mealapp.data.Schools
 

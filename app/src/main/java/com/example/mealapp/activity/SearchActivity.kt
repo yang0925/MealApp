@@ -1,8 +1,9 @@
-package com.example.mealapp
+package com.example.mealapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mealapp.R
 import com.example.mealapp.adapter.SearchAdapter
 import com.example.mealapp.data.Schools
 import com.example.mealapp.data.SearchData
