@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-
-    <TextView
-    android:id="@+id/tv_date"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="32dp"
-    android:text="오늘 날짜"
-    android:textSize="18dp"
- />
-
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarlayout"
         android:layout_width="match_parent"
@@ -30,7 +19,7 @@
             app:tabInlineLabel="true"
             app:tabMode="fixed"
             app:tabTextAppearance="@style/CustomTabStyle"
-            app:tabTextColor="@color/colorWhite">
+            app:tabTextColor="@color/colorBlack">
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager.widget.ViewPager
