@@ -7,14 +7,12 @@ import android.widget.Toast
 import com.example.mealapp.R
 import com.example.mealapp.adapter.ViewPagerAdapter
 import com.example.mealapp.data.MealData
-import com.example.mealapp.db.MealsDB
 import com.example.mealapp.fragment.BreakfastFragment
 import com.example.mealapp.fragment.DinnerFragment
 import com.example.mealapp.fragment.LunchFragment
 import com.example.mealapp.network.RetrofitClient
 import com.example.mealapp.network.Service
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_breakfast.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +24,8 @@ import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity(){
 
-    private var mealsDB: MealsDB? = null
+    val pref = SearchActivity().getPreferences(0)
+    val editor = pref.edit()
 
     var schoolId : String = ""
     var opCode : String = ""
@@ -38,14 +37,6 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mealsDB = MealsDB.getInstance(this)
-
-        val r = Runnable {
-
-        }
-
-        val thread = Thread(r)
-        thread.start()
 
         Log.d("TAG", "들어옴")
 
