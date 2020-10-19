@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.example.mealapp.R
 import com.example.mealapp.adapter.ViewPagerAdapter
 import com.example.mealapp.data.MealData
+import com.example.mealapp.db.MealsDB
 import com.example.mealapp.fragment.BreakfastFragment
 import com.example.mealapp.fragment.DinnerFragment
 import com.example.mealapp.fragment.LunchFragment
@@ -25,6 +26,8 @@ import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity(){
 
+    private var mealsDB: MealsDB? = null
+
     var schoolId : String = ""
     var opCode : String = ""
 
@@ -34,6 +37,15 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mealsDB = MealsDB.getInstance(this)
+
+        val r = Runnable {
+
+        }
+
+        val thread = Thread(r)
+        thread.start()
 
         Log.d("TAG", "들어옴")
 
