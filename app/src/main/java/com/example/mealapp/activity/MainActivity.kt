@@ -24,9 +24,6 @@ import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity(){
 
-    val pref = SearchActivity().getPreferences(0)
-    val editor = pref.edit()
-
     var schoolId : String = ""
     var opCode : String = ""
 
