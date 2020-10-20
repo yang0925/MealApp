@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -46,9 +45,4 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     implementation 'com.google.android.material:material:1.0.0'
-
-
-    kapt "androidx.room:room-compiler:2.2.3"
-    testImplementation "androidx.room:room-testing:2.2.3"
-    implementation "androidx.room:room-runtime:2.2.3"
 }
