@@ -7,13 +7,13 @@ import android.widget.Toast
 import com.example.mealapp.R
 import com.example.mealapp.adapter.ViewPagerAdapter
 import com.example.mealapp.data.MealData
+import com.example.mealapp.data.MealObject
 import com.example.mealapp.fragment.BreakfastFragment
 import com.example.mealapp.fragment.DinnerFragment
 import com.example.mealapp.fragment.LunchFragment
 import com.example.mealapp.network.RetrofitClient
 import com.example.mealapp.network.Service
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_breakfast.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity(){
 
     lateinit var myAPI : Service
     lateinit var retrofit: Retrofit
+
+    lateinit var adapter : ViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,16 +53,12 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun setUpTabs() {
-        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(BreakfastFragment(), "아침")
         adapter.addFragment(LunchFragment(), "점심")
         adapter.addFragment(DinnerFragment(), "저녁")
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
-
-        //tabs.getTabAt(0)!!.setIcon(R.drawable.ic_baseline_brightness_medium_24)
-        //tabs.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_brightness_high_24)
-        //tabs.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_brightness_3_24)
     }
 
     private fun setMealsRetrofit() {
@@ -76,9 +74,13 @@ class MainActivity : AppCompatActivity(){
 
             override fun onResponse(call: Call<MealData>, response: Response<MealData>) {
                 Toast.makeText(applicationContext, "성공", Toast.LENGTH_SHORT).show()
-                Log.d("TAG", response.body()!!.data.meals[0].replace("<br/>", "\n"))
-                tv_breakfast.text = response.body()!!.data.meals[0].replace("<br/>", "\n")
-                //tv_date.text = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일").format(current);
+                val list = response.body()!!.data.meals
+
+                MealObject.breakfast = list[0]?.replace("<br/>", "\n") ?: "급식이 없습니다"
+                MealObject.lunch = list[1]?.replace("<br/>", "\n") ?: "급식이 없습니다"
+                MealObject.dinner = list[2]?.replace("<br/>", "\n") ?: "급식이 없습니다"
+                print(MealObject.lunch)
+                adapter.notifyDataSetChanged()
             }
 
         })
