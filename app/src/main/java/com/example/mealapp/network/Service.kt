@@ -1,6 +1,5 @@
 package com.example.mealapp.network
 
-
 import com.example.mealapp.data.MealData
 import com.example.mealapp.data.SearchData
 import retrofit2.Call

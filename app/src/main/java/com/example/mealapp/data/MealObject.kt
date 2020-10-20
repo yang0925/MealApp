@@ -1,6 +1,5 @@
 package com.example.mealapp.data
 
-
 object MealObject {
 
     var breakfast : String = ""
