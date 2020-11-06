@@ -14,7 +14,7 @@
    
   <h2>❕ 기술</h2>
   
-  ✔ Retrofit + okhttp
+  ✔ Retrofit2 + okhttp3
   
 
   <h2>🛠 사용툴/언어</h2>
